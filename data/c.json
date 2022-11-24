@@ -1,0 +1,15 @@
+[
+    {
+      "c_id": "01",
+      "name": "HP Laptop"
+    },
+    {
+      "c_id": "02",
+      "name": "Dell Laptop"
+    },
+    {
+      "c_id": "03",
+      "name": "Walton Laptop"
+    }
+
+  ]
