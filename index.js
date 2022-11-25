@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
 require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const port = process.env.PORT || 5000;
@@ -19,6 +20,10 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1,
 });
+//verify jwt
+
+
+
 
 async function run() {
   try {
@@ -64,6 +69,21 @@ async function run() {
       const result = await usersCollection.insertOne(user);
       res.send(result);
     });
+
+
+
+    //jwt start
+    app.get('/jwt', async (req, res) => {
+      const email = req.query.email;
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+      if (user) {
+          const token = jwt.sign({ email }, process.env.ACCESS_TOKEN, { expiresIn: '1h' })
+          return res.send({ accessToken: token });
+      }
+      res.status(403).send({ accessToken: '' })
+  });
+    //jwt end
   } catch (error) {
     console.log(error.name, error.message);
   }
