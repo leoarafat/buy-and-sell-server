@@ -20,12 +20,12 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
-
 async function run() {
   try {
     const productsCollection = client.db("buyAndSell").collection("products");
     const categoryCollection = client.db("buyAndSell").collection("category");
     const bookingsCollection = client.db("buyAndSell").collection("bookings");
+    const usersCollection = client.db("buyAndSell").collection("users");
 
     app.get("/category", async (req, res) => {
       const query = {};
@@ -37,29 +37,34 @@ async function run() {
       const result = await productsCollection.find(query).toArray();
       res.send(result);
     });
-    app.get('/category/:id', async (req, res) => {
-        const id = req.params.id;
-        // console.log(id)
-      const filter = {category_id:(id)}
-      const result = await productsCollection.find(filter).toArray()
-        res.send(result)
+    app.get("/category/:id", async (req, res) => {
+      const id = req.params.id;
+      // console.log(id)
+      const filter = { category_id: id };
+      const result = await productsCollection.find(filter).toArray();
+      res.send(result);
+    });
 
-    })
-   
+    //bookings
+    app.post("/bookings", async (req, res) => {
+      const booking = req.body;
+      const result = await bookingsCollection.insertOne(booking);
+      res.send(result);
+    });
 
-//bookings
-app.post('/bookings', async(req, res)=>{
-    const booking = req.body 
-    const result = await bookingsCollection.insertOne(booking)
-    res.send(result)
-})
-
-
-
-
-
-  } 
-  catch (error) {
+    app.get("/bookings", async (req, res) => {
+      const email = req.query.email;
+      const query = { email: email };
+      const bookings = await bookingsCollection.find(query).toArray();
+      res.send(bookings);
+    });
+    //get user data
+    app.post("/users", async (req, res) => {
+      const user = req.body;
+      const result = await usersCollection.insertOne(user);
+      res.send(result);
+    });
+  } catch (error) {
     console.log(error.name, error.message);
   }
 }
