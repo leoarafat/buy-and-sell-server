@@ -1,17 +1,17 @@
 [
     {
-      "c_id": "01",
+      "c_id": "1",
       "name": "HP Laptop",
       "logo": "https://logos-world.net/wp-content/uploads/2020/12/Hewlett-Packard-Logo-1999.png"
     },
     {
-      "c_id": "02",
+      "c_id": "2",
       "name": "Dell Laptop",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/2048px-Dell_Logo.svg.png"
 
     },
     {
-      "c_id": "03",
+      "c_id": "3",
       "name": "Walton Laptop",
       "logo": "https://seeklogo.com/images/W/walton-logo-8655B6D7F3-seeklogo.com.png"
     }
