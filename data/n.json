@@ -2,6 +2,7 @@
     {
      
       "category_id": "1",
+      "seller_name": "Yeasin Arafat",
       "included": "1 Year On-site Warranty",
       "rating": { "number": 4.5, "badge": "Excellent" },
       "price": 15000,
@@ -27,6 +28,7 @@
     {
     
       "category_id": "3",
+      "seller_name": "Abdullah Al Mahmud",
       "included": "1 Year On-site Warranty",
       "rating": { "number": 4.5, "badge": "Excellent" },
       "price": 18000,
@@ -51,6 +53,7 @@
     },
     {
       "category_id": "2",
+      "seller_name": "Sheik Lamal",
       "included": "1 Year On-site Warranty",
       "rating": { "number": 4.5, "badge": "Excellent" },
       "price": 10000,
@@ -75,6 +78,7 @@
     },
     {
       "category_id": "1",
+      "seller_name": "Mamunul Islam",
       "included": "1 Year On-site Warranty",
       "rating": { "number": 4.5, "badge": "Excellent" },
       "price": 25000,
@@ -99,6 +103,7 @@
     },
     {
       "category_id": "2",
+      "seller_name": "Mahi Islam",
       "included": "1 Year On-site Warranty",
       "rating": { "number": 4.5, "badge": "Excellent" },
       "price": 12000,
@@ -123,6 +128,7 @@
     },
     {
       "category_id": "3",
+      "seller_name": "Keya Khatun",
       "included": "1 Year On-site Warranty",
       "rating": { "number": 4.5, "badge": "Excellent" },
       "price": 12500,

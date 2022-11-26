@@ -47,6 +47,7 @@ async function run() {
     const usersCollection = client.db("buyAndSell").collection("users");
     const paymentsCollection = client.db("buyAndSell").collection("payment");
     const addProductCollection = client.db("buyAndSell").collection('addProduct')
+    const advertiseCollection = client.db("buyAndSell").collection('advertise')
     app.get("/category", async (req, res) => {
       const query = {};
       const result = await categoryCollection.find(query).toArray();
@@ -71,7 +72,21 @@ async function run() {
       const result = await productsCollection.insertOne(add);
       res.send(result);
     });
-
+    // app.post("/addProduct", verifyJWT, async (req, res) => {
+    //   const add = req.body;
+    //   const result = await addProductCollection.insertOne(add);
+    //   res.send(result);
+    // });
+app.post('/advertise', async(req, res)=>{
+  const query = req.body 
+  const result = await advertiseCollection.insertOne(query)
+  res.send(result)
+})
+app.get('/advertise', async(req, res)=>{
+  const query = req.body 
+  const result = await advertiseCollection.find(query).toArray()
+  res.send(result)
+})
 
     //bookings
     app.post("/bookings", verifyJWT, async (req, res) => {
@@ -166,6 +181,12 @@ async function run() {
       const query = { email };
       const user = await usersCollection.findOne(query);
       res.send({ isAdmin: user?.role === "admin" });
+    });
+    app.get("/users/seller/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { email };
+      const user = await usersCollection.findOne(query);
+      res.send({ isAdmin: user?.role === "seller" });
     });
     //PAYMENT
     app.post("/create-payment-intent", async (req, res) => {
